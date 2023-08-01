@@ -42,10 +42,11 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <img :src="skill.image" alt="Image for the skill" class="w-12 h-12 rounded-full"/>
-                                </td>
+                                </td>       
                                 <td class="px-6 py-4">
-                                    Edit | Delete
-                                </td>
+                                    <Link :href="route('skills.edit', skill.id)" class="font-medium text-blue-500 hover:text-blue-700 mr-2">Edit</Link>
+                                    <Link :href="route('skills.destroy', skill.id)" method="delete" as="button" type="button" class="font-medium text-blue-500 hover:text-blue-700 mr-2">Delete</Link>
+                                </td>    
                             </tr>
                         </tbody>
                     </table>

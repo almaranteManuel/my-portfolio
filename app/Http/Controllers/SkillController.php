@@ -45,15 +45,9 @@ class SkillController extends Controller
     }
 
 
-    public function show(string $id)
+    public function edit(Skill $skill)
     {
-        //
-    }
-
-
-    public function edit(string $id)
-    {
-        //
+        return Inertia::render('Skills/Edit', compact('skill'));
     }
 
 
