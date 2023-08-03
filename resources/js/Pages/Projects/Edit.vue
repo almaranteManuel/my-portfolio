@@ -1,8 +1,8 @@
 <template>
-    <Head title="New Project" />
+    <Head title="Update Project" />
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">New Project</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Update Project</h2>
         </template>
 
         <div class="py-12">
@@ -13,7 +13,6 @@
                         <select v-model="form.skill_id" id="skill_id" name="skill_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                             <option v-for="skill in skills" :key="skill.id" :value="skill.id">{{ skill.name }}</option>
                         </select>
-                        <InputError class="mt-2" :message="form.errors.skill_id" />
                     </div>
                     <div class="mb-2">
                         <InputLabel for="name" value="Name" />
@@ -43,7 +42,7 @@
 
                     <div class="flex items-center justify-end mt-4">
                         <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Store
+                            Update
                         </PrimaryButton>
                     </div>
                 </form>
@@ -60,19 +59,27 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import { Inertia } from '@inertiajs/inertia';
 
-defineProps({
-    skills: Array
+const props = defineProps({
+    skills: Array,
+    project: Object,
 })
 
 const form = useForm({
-    name: '',
+    name: props.project?.name,
     image: null,
-    skill_id: "",
-    project_url: ""
+    skill_id: props.project?.skill_id,
+    project_url: props.project?.project_url
 });
 
 const submit = () => {
-    form.post(route('projects.store'));
+    Inertia.post(`/projects/${props.project.id}`, {
+        _method: "put",
+        name: form.name,
+        image: form.image,
+        skill_id: form.skill_id,
+        project_url: form.project_url
+    });
 };
 </script>
