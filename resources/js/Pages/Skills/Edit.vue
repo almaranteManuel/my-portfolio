@@ -1,5 +1,5 @@
 <template>
-    <Head title="Edit Skill" />
+    <Head title="Update Skill" />
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">New Skill</h2>
@@ -27,7 +27,7 @@
 
                     <div class="flex items-center justify-end mt-4">
                         <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Edit
+                            Update
                         </PrimaryButton>
                     </div>
                 </form>
@@ -43,18 +43,23 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import { Inertia } from "@inertiajs/inertia";
 
-defineProps({
+const props = defineProps({
     skill: Object,
 });
 
 const form = useForm({
-    name: '',
+    name: props.skill?.name,
     image: null,
 });
 
 const submit = () => {
-    form.post(route('skills.store'));
+    Inertia.post(`/skills/${props.skill.id}`, {
+        _method: "put",
+        name:form.name,
+        image:form.image,
+    })
 };
 
 </script>
