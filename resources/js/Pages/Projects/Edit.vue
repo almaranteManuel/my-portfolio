@@ -12,6 +12,7 @@
                         <InputLabel for="skill_id" value="Skill" />
                         <select v-model="form.skill_id" id="skill_id" name="skill_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                             <option v-for="skill in skills" :key="skill.id" :value="skill.id">{{ skill.name }}</option>
+                            <InputError class="mt-2" :message="$page.props.errors.skill_id" />
                         </select>
                     </div>
                     <div class="mb-2">
@@ -20,7 +21,7 @@
                         <TextInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus
                             autocomplete="name" />
 
-                        <InputError class="mt-2" :message="form.errors.name" />
+                        <InputError class="mt-2" :message="$page.props.errors.name" />
                     </div>
 
                     <div>
@@ -29,7 +30,7 @@
                         <TextInput id="project_url" type="text" class="mt-1 block w-full" v-model="form.project_url"
                             autocomplete="projecturl" />
 
-                        <InputError class="mt-2" :message="form.errors.project_url" />
+                        <InputError class="mt-2" :message="$page.props.project_url" />
                     </div>
 
                     <div class="mt-2">
@@ -37,7 +38,7 @@
 
                         <TextInput id="image" type="file" class="mt-1 block w-full" @input="form.image = $event.target.files[0]"/>
 
-                        <InputError class="mt-2" :message="form.errors.image" />
+                        <InputError class="mt-2" :message="$page.props.errors.image" />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
