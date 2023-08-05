@@ -17,9 +17,6 @@
                              Facilis aut nulla fugiat cupiditate id sit, placeat enim itaque quasi tempore, nemo dolor ullam! Error.
                         </p>
                     </div>
-                    <a href="#contact" class="btn btn-md bg-accent text-light-tail-100">
-                        Contact me
-                    </a>
                 </div>
             </div>
         </div>

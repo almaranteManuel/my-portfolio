@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import FrontendLayout from '@/Layouts/Frontend.vue';
 import Hero from '@/Components/Frontend/Hero.vue';
 import Promote from '@/Components/Frontend/Promote.vue';
@@ -24,7 +24,7 @@ defineProps({
         <Hero />
 
         <!-- promote -->
-        <Promote />
+        <!-- <Promote /> -->
 
         <!-- About -->
         <About />
@@ -36,7 +36,7 @@ defineProps({
         <Portfolio :skills="skills" :projects="projects" />
 
         <!-- Services -->
-        <Services />
+        <!-- <Services /> -->
 
         <!-- Contact -->
         <ContactMe />

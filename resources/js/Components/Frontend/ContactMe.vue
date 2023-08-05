@@ -1,6 +1,35 @@
+<script setup>
+    import { ref } from 'vue';
+    import { useForm } from '@inertiajs/vue3';
+
+    const showMessage = ref(false);
+
+    const form = useForm({
+        name: '',
+        email: '',
+        body: '',
+    });
+
+    function setShowMessage(value) {
+        showMessage.value = value;
+    };
+
+    function cleanForm() {
+        form.reset();
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 2000);
+    }
+
+    const submit = () => {
+        form.post(route('contact'), {
+            preserveScroll: true,
+            onSuccess: () => cleanForm(),
+        });
+    };
+</script>
 
 <template>
-    <section class="section bg-light-primary dark:bg-dark-primary">
+    <section class="section bg-light-primary dark:bg-dark-primary" id="contact">
         <div class="container mx-auto">
             <div class="flex flex-col items-center text-center">
                 <h2 class="section-title">
@@ -45,23 +74,27 @@
                         </div>
                     </div>
                 </div>
-                <form action="" class="space-y-8 w-full max-w-md">
+                <form @submit.prevent="submit" action="" class="space-y-8 w-full max-w-md">
+                    <div v-if="showMessage" class="m-2 p-4 bg-light-tail-500 dark:bg-dark-navy-100 text-light-secondary rounded-lg">
+                        Thank you for contacting me!
+                    </div>
                     <div class="flex gap-8">
                         <div>
-                            <input type="text" class="input" placeholder="Your Name">
-                            <span class="text-sm m-2 text-red-400 ">Error</span>
+                            <input v-model="form.name" type="text" class="input" placeholder="Your Name">
+                            <span v-if="form.errors.name" class="text-sm m-2 text-red-400 ">{{ form.errors.name }}</span>
                         </div>
                         <div>
-                            <input type="email" class="input" placeholder="Your Email">
-                            <span class="text-sm m-2 text-red-400 ">Error</span>
+                            <input v-model="form.email" type="email" class="input" placeholder="Your Email">
+                            <span v-if="form.errors.email" class="text-sm m-2 text-red-400 ">{{ form.errors.email }}</span>
                         </div>
                     </div>
-                    <textarea class="textarea" placeholder="Your Message" spellcheck="false" id="" cols="30" rows="10"></textarea>
-                    <span class="text-sm m-2 text-red-400 ">Error</span>
+                    <textarea v-model="form.body" class="textarea" placeholder="Your Message" spellcheck="false" id="" cols="30" rows="10"></textarea>
+                    <span v-if="form.errors.body" class="text-sm m-2 text-red-400 ">{{ form.errors.body }}</span>
                     <button class="btn btn-lg bg-accent hover:bg-secondary text-white">
                         Send message
                     </button>
                 </form>
             </div>
         </div>
-</section></template>
+    </section>
+</template>
