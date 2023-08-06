@@ -30,13 +30,13 @@
 
 <template>
     <section class="section bg-light-primary dark:bg-dark-primary" id="contact">
-        <div class="container mx-auto">
+        <div class="container mx-auto" v-motion :initial="{opacity: 0, y:100}" :visible="{opacity: 1, y:0}">
             <div class="flex flex-col items-center text-center">
                 <h2 class="section-title">
                     Contact Me
                 </h2>
                 <p class="subtitle">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis in, quia accusamus sunt qui.
+                    If you consider that I can add value to your company, do not hesitate to contact me!
                 </p>
             </div>
             <div class="flex flex-col lg:flex-row lg:gap-x-8">
