@@ -1,6 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.classList.add('dark')
+} else {
+  document.documentElement.classList.remove('dark')
+}
+
+
 const showMobileMenu = ref('false');
 
 const scrollBg = ref(false);
