@@ -9,12 +9,14 @@
                             About me
                         </h2>
                         <p class="mb-4 text-accent">
-                            Web fullstack developer
+                            Web fullstack developer with Laravel
                         </p>
                         <hr class="mb-8 opacity-100 dark:opacity-5">
                         <p class="mb-8">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores esse consequatur nihil ipsa perspiciatis.
-                             Facilis aut nulla fugiat cupiditate id sit, placeat enim itaque quasi tempore, nemo dolor ullam! Error.
+                            I am currently studying a Bachelor's degree in Computer Science.
+                            have experience programming new features for different sites.
+                            Working mainly with technologies like Laravel for the Back-end, React and Bootstrap for the Front-end. 
+                            To learn more about my work, i invite you to visit my linkedin, github and see my CV where i explain in more detail what i did and do.
                         </p>
                     </div>
                 </div>

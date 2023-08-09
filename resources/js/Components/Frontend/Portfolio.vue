@@ -14,8 +14,7 @@ defineProps({
                     My latest work
                 </h2>
                 <p class="subtitle">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    At, qui dolorum a quia debitis et excepturi ipsam enim corrupti.
+                    Here we present both our own works and those for the company in which i work.
                 </p>
             </div>
         </div>
